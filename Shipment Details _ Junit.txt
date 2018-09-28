@@ -1,0 +1,55 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class ShipmentJunit {
+    ShipmentBO shipmentBO;
+    SimpleDateFormat sdf;
+    List<Shipment> shipmentlist = new ArrayList<Shipment>();
+    
+    @Before
+	public void shipmentObjectCreation()
+	{
+		//fill code here.
+    	shipmentBO = new ShipmentBO();
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+	}
+	
+    @Test
+	public void testUpdateArrivalDate() throws Exception
+	{
+		//fill code here.
+		
+		shipmentBO.updateArrivalDate(45,"12/10/2017", ShipmentDAO.shipmentList);
+		List<Shipment> shipmentlist = ShipmentDAO.shipmentList;
+		for(int i=0;i<shipmentlist.size();i++){
+			if(shipmentlist.get(i).getId()==45){
+				assertEquals(0,(shipmentlist.get(i).getArrivalDate()).compareTo(sdf.parse("12/10/2017")));
+			}
+		}
+	}
+	
+    @Test
+	public void testFilterByArrivalDate() throws Exception
+	{
+		//fill code here.
+/*		List<String> expnames = null;
+		expnames.add("Laptop");
+		expnames.add("Television");
+		expnames.add("Washing Machine");
+		expnames.add("Air Conditioner");
+		expnames.add("Air Cooler");
+		expnames.add("Personal Computer");
+		expnames.add("Samsung Mobile");
+		expnames.add("Home Theater");*/
+		List<String> names = shipmentBO.filterByArrivalDate(ShipmentDAO.shipmentList, sdf.parse("11/11/2015"));
+		assertThat(names, containsInAnyOrder("Laptop","Television","Washing Machine","Air Conditioner","Air Cooler","Personal Computer",
+				"Samsung Mobile","Home Theater"));
+		
+	}
+}
