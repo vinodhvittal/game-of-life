@@ -1,4 +1,0 @@
-valence                 sendvalence             download25              [rd:/NMHC/999]-[rf:^\S+\.999$]-[ld:/u/spool/queues/inbound/45129]
-valence                 sendvalence             upload38                [ld:/u/spool/queues/async/45129]-[lf:cmb\w+.jc.]-[rd:/NMHC]-[rf:m837_45129_<%yyyyMMdd%>_<%COUNTER%>.pro]
-valence                 sendvalence             upload39                [ld:/u/spool/queues/async/45129_hosp]-[lf:cmb\w+.jc.]-[rd:/NMHC]-[rf:h837_45129_<%yyyyMMdd%>_<%COUNTER%>.fac]
-valence                 sendvalence             upload40                [ld:/u/spool/queues/async/45129]-[lf:(C337290N\.\w+\.C0\S+)\.(REPORT.PRPT).*]-[rd:/NMHC]-[rf:<%GROUP[1]%>.<%COUNTER[N=45129seq][S=5][T=D]%>.<%GROUP[2]%>]
